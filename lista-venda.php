@@ -14,14 +14,22 @@
             <thead>
                 <tr>
                     <th scope="col">id</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Comissão</th>
                     <th scope="col">Valor</th>
+                    <th scope="col">Data</th>
                 </tr>
             </thead>
             <tbody>
                 <?php foreach ($vendas as $venda) : ?>
                     <tr>
                         <th scope="row"><?= $venda['id'] ?? '' ?></th>
-                        <td><?= $venda['valor'] ?? '' ?></td>                        
+                        <td><?= $venda['nome'] ?? '' ?></td>
+                        <td><?= $venda['email'] ?? '' ?></td>
+                        <td><?= $venda['comissao'] ?? '' ?></td>
+                        <td><?= $venda['valor'] ?? '' ?></td>
+                        <td><?= $venda['data'] ?? '' ?></td>
                     </tr>
                 <?php endforeach; ?>
             </tbody>

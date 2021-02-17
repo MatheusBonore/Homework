@@ -1,3 +1,5 @@
+<?php require_once 'vendedores/select.php'; ?>
+
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
@@ -18,11 +20,27 @@
 
 		<h1>Cadastrar Venda</h1>
 
-		<div class="mb-3">
-			<label for="valor" class="form-label">Valor</label>
-			<input type="number" class="form-control" placeholder="Valor da Venda" id="valor">
+		<div class="row">
+			<div class="col-md-6">
+				<label for="valor" class="form-label">Valor</label>
+				<input type="number" class="form-control" placeholder="Valor da Venda" id="valor">
+			</div>
+			<div class="col-md-4">
+				<label for="valor" class="form-label">Vendedor</label>
+				<select class="form-select" id="id_vendedor" aria-label="Vendedores">
+					<?php foreach ($vendedores as $vendedor) : ?>
+						<option value="<?= $vendedor['id'] ?? '' ?>">
+							<?= $vendedor['nome'] ?? '' ?>
+						</option>
+					<?php endforeach; ?>
+				</select>
+			</div>
+			<div class="col-md-2">
+				<label for="valor" class="form-label">Comissão %</label>
+				<input type="text" class="form-control" placeholder="Comissão" id="comissao" value="8,5" readonly>
+			</div>
 		</div>
-		<button type="button" class="btn btn-success" id="btn_enviar">Enviar</button>
+		<button type="button" class="btn btn-success mt-3" id="btn_enviar">Enviar</button>
 	</div>
 </main>
 
@@ -30,12 +48,16 @@
 	$(function() {
 		$(document).on('click', '#btn_enviar', function() {
 			var valor = $('#valor').val();
+			var id_vendedor = $('#id_vendedor').val();
+			var comissao = $('#comissao').val();
 
 			$.ajax({
 				url: 'vendas/insert.php',
 				type: 'post',
 				data: {
-					valor
+					valor,
+					id_vendedor,
+					comissao
 				}
 			}).done(res => {
 				var json = JSON.parse(res);
