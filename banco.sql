@@ -1,0 +1,23 @@
+CREATE DATABASE homework;
+USE homework;
+
+CREATE TABLE vendedor (
+  id INTEGER PRIMARY KEY AUTO_INCREMENT,
+  nome VARCHAR(20) NOT NULL,
+  email VARCHAR(40)
+);
+
+CREATE TABLE venda (
+  id INTEGER PRIMARY KEY AUTO_INCREMENT,
+  valor DECIMAL(5,2) NOT NULL
+);
+
+CREATE TABLE venda_vendedor (
+  id INTEGER PRIMARY KEY AUTO_INCREMENT,
+  id_vendedor INTEGER NOT NULL,
+  id_venda INTEGER NOT NULL,
+  comissao DECIMAL(5,2) NOT NULL,
+  data_venda DATE NOT NULL,
+  FOREIGN KEY (id_vendedor) REFERENCES vendedor(id),
+  FOREIGN KEY (id_venda) REFERENCES venda(id)
+);
