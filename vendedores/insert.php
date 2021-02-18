@@ -1,14 +1,12 @@
 <?php
 
-$nome = $_POST['nome'];
-$email = $_POST['email'];
+$nome = filter_var($_POST['nome']);
+$email = filter_var($_POST['email']);
 
-require_once './../inc/DB.php';
+require_once './../model/Vendedor.php';
 
-$db = new DB();
-$db->getCon()
-	->prepare('INSERT INTO vendedor (nome, email) VALUES (?, ?)')
-	->execute([$nome, $email]);
+$modelVendedor = new Vendedor();
+$modelVendedor->insert($nome, $email);
 
 http_response_code(200);
 die(json_encode([

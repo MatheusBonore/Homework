@@ -1,8 +1,6 @@
 <?php
 
-require_once 'inc/DB.php';
+require_once './../model/Vendedor.php';
 
-$db = new DB();
-$vendedor = $db->getCon()
-    ->query("SELECT * FROM vendedor WHERE id = $id")
-    ->fetch();
+$vendedor = new Vendedor();
+$vendedor->selectOne($id);

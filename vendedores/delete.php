@@ -2,12 +2,10 @@
 
 $id = $_POST['id'];
 
-require_once './../inc/DB.php';
+require_once './../model/Vendedor.php';
 
-$db = new DB();
-$db->getCon()
-	->prepare('DELETE FROM vendedor WHERE id = ?')
-	->execute([$id]);
+$modelVendedor = new Vendedor();
+$modelVendedor->delete($id);
 
 http_response_code(200);
 die(json_encode([

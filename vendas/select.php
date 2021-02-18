@@ -1,8 +1,6 @@
 <?php
 
-require_once 'inc/DB.php';
+require_once './../model/Venda.php';
 
-$db = new DB();
-$vendas = $db->getCon()
-	->query('SELECT * FROM venda')
-	->fetchAll(\PDO::FETCH_ASSOC);
+$vendas = new Venda();
+$vendas->select();

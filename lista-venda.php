@@ -34,6 +34,6 @@
                 <?php endforeach; ?>
             </tbody>
         </table>
-        <a class="btn btn-success" href="formulario-venda" role="button">Adicionar</a>
+        <a class="btn btn-success" href="formulario-venda.php" role="button">Adicionar</a>
     </div>
 </main>

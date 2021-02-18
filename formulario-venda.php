@@ -1,6 +1,7 @@
 <?php require_once 'vendedores/select.php'; ?>
 
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-maskmoney/3.0.2/jquery.maskMoney.min.js"></script>
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
@@ -11,7 +12,7 @@
 	<div class="bg-light p-5 rounded mt-3">
 		<nav aria-label="breadcrumb">
 			<ol class="breadcrumb">
-				<li class="breadcrumb-item"><a href="#">Lista</a></li>
+				<li class="breadcrumb-item"><a href="/lista-venda.php">Lista</a></li>
 				<li class="breadcrumb-item active" aria-current="page">
 					Cadastrar Venda
 				</li>
@@ -23,7 +24,7 @@
 		<div class="row">
 			<div class="col-md-6">
 				<label for="valor" class="form-label">Valor</label>
-				<input type="number" class="form-control" placeholder="Valor da Venda" id="valor">
+				<input type="text" class="form-control" placeholder="Valor da Venda" id="valor">
 			</div>
 			<div class="col-md-4">
 				<label for="valor" class="form-label">Vendedor</label>
@@ -46,13 +47,18 @@
 
 <script>
 	$(function() {
+		$('#valor').maskMoney({
+			thousands: '',
+			decimal:'.',
+		});
+
 		$(document).on('click', '#btn_enviar', function() {
 			var valor = $('#valor').val();
 			var id_vendedor = $('#id_vendedor').val();
 			var comissao = $('#comissao').val();
 
 			$.ajax({
-				url: 'vendas/insert.php',
+				url: '/vendas/insert.php',
 				type: 'post',
 				data: {
 					valor,
@@ -62,7 +68,7 @@
 			}).done(res => {
 				var json = JSON.parse(res);
 				// alert(json.mensagem);
-				window.location.href = "lista-venda";
+				window.location.href = "/lista-venda.php";
 			});
 		});
 	});

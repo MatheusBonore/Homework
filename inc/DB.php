@@ -11,7 +11,7 @@ class DB
 		}
 	}
 
-	public function getCon()
+	protected function getCon()
 	{
 		return self::$con;
 	}

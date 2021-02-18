@@ -20,7 +20,7 @@ if (isset($_GET['id'])) {
 	<div class="bg-light p-5 rounded mt-3">
 		<nav aria-label="breadcrumb">
 			<ol class="breadcrumb">
-				<li class="breadcrumb-item"><a href="#">Lista</a></li>
+				<li class="breadcrumb-item"><a href="/lista-vendedor.php">Lista</a></li>
 				<li class="breadcrumb-item active" aria-current="page">
 					<?php if ($cadastro) : ?>
 						Cadastrar Vendedor
@@ -42,11 +42,11 @@ if (isset($_GET['id'])) {
 		<input type="hidden" name="id" value="<?= $id ?? 0 ?>">
 		<div class="mb-3">
 			<label for="nome" class="form-label">Nome</label>
-			<input type="text" class="form-control" placeholder="Nome do Fornecedor" id="nome" value="<?= $vendedor['nome'] ?? '' ?>">
+			<input type="text" class="form-control" placeholder="Nome do Fornecedor" maxlength="20" id="nome" value="<?= $vendedor['nome'] ?? '' ?>">
 		</div>
 		<div class="mb-3">
 			<label for="nome" class="form-label">E-mail</label>
-			<input type="email" class="form-control" placeholder="E-mail do Fornecedor" id="email" value="<?= $vendedor['email'] ?? '' ?>">
+			<input type="email" class="form-control" placeholder="E-mail do Fornecedor" maxlength="40" id="email" value="<?= $vendedor['email'] ?? '' ?>">
 		</div>
 		<button type="button" class="btn btn-success" id="btn_enviar">Enviar</button>
 	</div>
@@ -60,7 +60,7 @@ if (isset($_GET['id'])) {
 				var email = $('#email').val();
 
 				$.ajax({
-					url: 'vendedores/insert.php',
+					url: '/vendedores/insert.php',
 					type: 'post',
 					data: {
 						nome,
@@ -69,7 +69,7 @@ if (isset($_GET['id'])) {
 				}).done(res => {
 					var json = JSON.parse(res);
 					// alert(json.mensagem);
-					window.location.href = "lista-vendedor";
+					window.location.href = "/lista-vendedor.php";
 				});
 			});
 		});
@@ -81,7 +81,7 @@ if (isset($_GET['id'])) {
 				var email = $('#email').val();
 
 				$.ajax({
-					url: 'vendedores/update.php',
+					url: '/vendedores/update.php',
 					type: 'post',
 					data: {
 						id,
@@ -91,7 +91,7 @@ if (isset($_GET['id'])) {
 				}).done(res => {
 					var json = JSON.parse(res);
 					// alert(json.mensagem);
-					window.location.href = "lista-vendedor";
+					window.location.href = "/lista-vendedor.php";
 				});
 			});
 		});

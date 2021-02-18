@@ -25,17 +25,17 @@
                 <?php foreach ($vendedores as $vendedor) : ?>
                     <tr id="tr_<?= $vendedor['id'] ?? '' ?>">
                         <th scope="row"><?= $vendedor['id'] ?? '' ?></th>
-                        <td><?= $vendedor['nome'] ?? '' ?></td>
+                        <td><?= filter_var($vendedor['nome'] ?? '', FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?></td>
                         <td><?= $vendedor['email'] ?? '' ?></td>
                         <td>
-                            <a class="btn btn-link btn-sm" href="formulario-vendedor/?id=<?= $vendedor['id'] ?? '' ?>" role="button">Editar</a>
+                            <a class="btn btn-link btn-sm" href="formulario-vendedor.php/?id=<?= $vendedor['id'] ?? '' ?>" role="button">Editar</a>
                             <button type="button" class="btn btn-link btn-sm" onclick="excluir(<?= $vendedor['id'] ?? '' ?>);">Excluir</button>
                         </td>
                     </tr>
                 <?php endforeach; ?>
             </tbody>
         </table>
-        <a class="btn btn-success" href="formulario-vendedor" role="button">Adicionar</a>
+        <a class="btn btn-success" href="formulario-vendedor.php" role="button">Adicionar</a>
     </div>
 </main>
 
