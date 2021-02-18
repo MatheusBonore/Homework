@@ -25,7 +25,11 @@
                 <?php foreach ($vendedores as $vendedor) : ?>
                     <tr id="tr_<?= $vendedor['id'] ?? '' ?>">
                         <th scope="row"><?= $vendedor['id'] ?? '' ?></th>
-                        <td><?= filter_var($vendedor['nome'] ?? '', FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?></td>
+                        <td>
+                            <a class="btn btn-link btn-sm" href="lista-venda.php/?id=<?= $vendedor['id'] ?? '' ?>" role="button">
+                                <?= filter_var($vendedor['nome'] ?? '', FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?>
+                            </a>
+                        </td>
                         <td><?= $vendedor['email'] ?? '' ?></td>
                         <td>
                             <a class="btn btn-link btn-sm" href="formulario-vendedor.php/?id=<?= $vendedor['id'] ?? '' ?>" role="button">Editar</a>

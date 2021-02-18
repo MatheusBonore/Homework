@@ -11,6 +11,13 @@ class Venda extends DB
             ->fetchAll(\PDO::FETCH_ASSOC);
     }
 
+    public function selectId($id)
+    {
+        return $this->getCon()
+            ->query("SELECT * FROM venda WHERE id = $id")
+            ->fetch();
+    }
+
     public function insert($valor)
     {
         return $this->getCon()

@@ -1,4 +1,13 @@
-<?php require_once 'vendas/select.php'; ?>
+<?php
+
+if (isset($_GET['id'])) {
+    $id = $_GET['id'];
+
+    require 'vendas/selectId.php';
+} else {
+    require_once 'vendas/select.php';
+}
+?>
 
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 
