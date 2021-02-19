@@ -1,6 +1,3 @@
-<?php require_once 'vendedores/select.php'; ?>
-
-
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
@@ -11,6 +8,7 @@
 <main class="container">
     <div class="bg-light p-5 rounded mt-3">
         <h1>Lista de Vendedores</h1>
+        *Clique sobre o nome do funcionário para demonstrar as vendas feitas.
         <table class="table table-striped table-hover table-sm">
             <thead>
                 <tr>
@@ -18,7 +16,6 @@
                     <th scope="col">Nome</th>
                     <th scope="col">Email</th>
                     <th scope="col"></th>
-
                 </tr>
             </thead>
             <tbody>
@@ -26,27 +23,27 @@
                     <tr id="tr_<?= $vendedor['id'] ?? '' ?>">
                         <th scope="row"><?= $vendedor['id'] ?? '' ?></th>
                         <td>
-                            <a class="btn btn-link btn-sm" href="lista-venda.php/?id=<?= $vendedor['id'] ?? '' ?>" role="button">
+                            <a class="btn btn-link btn-sm" href="../venda/?action=listar&id=<?= $vendedor['id'] ?? '' ?>" role="button">
                                 <?= filter_var($vendedor['nome'] ?? '', FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?>
                             </a>
                         </td>
                         <td><?= $vendedor['email'] ?? '' ?></td>
                         <td>
-                            <a class="btn btn-link btn-sm" href="formulario-vendedor.php/?id=<?= $vendedor['id'] ?? '' ?>" role="button">Editar</a>
+                            <a class="btn btn-link btn-sm" href="?action=abrirAtualizacao&id=<?= $vendedor['id'] ?? '' ?>" role="button">Editar</a>
                             <button type="button" class="btn btn-link btn-sm" onclick="excluir(<?= $vendedor['id'] ?? '' ?>);">Excluir</button>
                         </td>
                     </tr>
                 <?php endforeach; ?>
             </tbody>
         </table>
-        <a class="btn btn-success" href="formulario-vendedor.php" role="button">Adicionar</a>
+        <a class="btn btn-success" href="?action=cadastro" role="button">Adicionar</a>
     </div>
 </main>
 
 <script>
     function excluir(id) {
         $.ajax({
-            url: 'vendedores/delete.php',
+            url: '?action=excluir',
             type: 'post',
             data: {
                 id

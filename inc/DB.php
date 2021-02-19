@@ -1,5 +1,7 @@
 <?php
 
+namespace Homework\Inc;
+
 class DB
 {
 	static $con;
@@ -19,7 +21,7 @@ class DB
 	private function conectar()
 	{
 		try {
-			return new PDO(
+			return new \PDO(
 				'mysql' .
 					':host=localhost' .
 					';dbname=homework' .

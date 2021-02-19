@@ -1,8 +1,10 @@
 <?php
 
-require_once './../inc/DB.php';
+namespace Homework\Model;
 
-class Vendedor extends DB
+require_once 'inc/DB.php';
+
+class Vendedor extends \Homework\Inc\DB
 {
     public function select()
     {

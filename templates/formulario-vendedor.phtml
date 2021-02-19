@@ -1,14 +1,3 @@
-<?php
-
-$cadastro = true;
-if (isset($_GET['id'])) {
-	$id = $_GET['id'];
-	$cadastro = false;
-
-	require 'vendedores/selectOne.php';
-}
-?>
-
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
@@ -20,7 +9,7 @@ if (isset($_GET['id'])) {
 	<div class="bg-light p-5 rounded mt-3">
 		<nav aria-label="breadcrumb">
 			<ol class="breadcrumb">
-				<li class="breadcrumb-item"><a href="/lista-vendedor.php">Lista</a></li>
+				<li class="breadcrumb-item"><a href="?action=listar">Lista</a></li>
 				<li class="breadcrumb-item active" aria-current="page">
 					<?php if ($cadastro) : ?>
 						Cadastrar Vendedor
@@ -60,7 +49,7 @@ if (isset($_GET['id'])) {
 				var email = $('#email').val();
 
 				$.ajax({
-					url: '/vendedores/insert.php',
+					url: '?action=cadastrar',
 					type: 'post',
 					data: {
 						nome,
@@ -69,7 +58,7 @@ if (isset($_GET['id'])) {
 				}).done(res => {
 					var json = JSON.parse(res);
 					// alert(json.mensagem);
-					window.location.href = "/lista-vendedor.php";
+					window.location.href = "?action=listar";
 				});
 			});
 		});
@@ -81,7 +70,7 @@ if (isset($_GET['id'])) {
 				var email = $('#email').val();
 
 				$.ajax({
-					url: '/vendedores/update.php',
+					url: '?action=atualizar',
 					type: 'post',
 					data: {
 						id,
@@ -91,7 +80,7 @@ if (isset($_GET['id'])) {
 				}).done(res => {
 					var json = JSON.parse(res);
 					// alert(json.mensagem);
-					window.location.href = "/lista-vendedor.php";
+					window.location.href = "?action=listar";
 				});
 			});
 		});
