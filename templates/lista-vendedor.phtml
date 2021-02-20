@@ -23,7 +23,7 @@
                     <tr id="tr_<?= $vendedor['id'] ?? '' ?>">
                         <th scope="row"><?= $vendedor['id'] ?? '' ?></th>
                         <td>
-                            <a class="btn btn-link btn-sm" href="../venda/?action=listar&id=<?= $vendedor['id'] ?? '' ?>" role="button">
+                            <a class="btn btn-link btn-sm" href="../venda/?action=listar&id_vendedor=<?= $vendedor['id'] ?? '' ?>" role="button">
                                 <?= filter_var($vendedor['nome'] ?? '', FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?>
                             </a>
                         </td>
