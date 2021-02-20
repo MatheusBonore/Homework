@@ -10,8 +10,10 @@
 	<div class="bg-light p-5 rounded mt-3">
 		<nav aria-label="breadcrumb">
 			<ol class="breadcrumb">
-				<li class="breadcrumb-item"><a href="?action=listar">Lista</a></li>
-				<li class="breadcrumb-item active" aria-current="page">
+				<li class="breadcrumb-item">
+					<a class="btn btn-link btn-sm" href="?action=listar" role="button">Lista</a>
+				</li>
+				<li class="breadcrumb-item active btn btn-link btn-sm" aria-current="page">
 					Cadastrar Venda
 				</li>
 			</ol>
@@ -47,7 +49,7 @@
 	$(function() {
 		$('#valor').maskMoney({
 			thousands: '',
-			decimal:'.',
+			decimal: '.',
 		});
 
 		$(document).on('click', '#btn_enviar', function() {
