@@ -17,6 +17,9 @@ class Venda extends \Homework\Inc\BaseController
         if (isset($_GET['id_vendedor'])) {
             $id_vendedor = $_GET['id_vendedor'];
 
+            $vendedor = new Model\Vendedor();
+            $vendedor = $vendedor->selectOne($id_vendedor);
+
             $vendas = $vendas->selectId($id_vendedor);
         } else {
             $vendas = $vendas->select();

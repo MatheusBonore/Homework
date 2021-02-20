@@ -21,6 +21,12 @@
 
     <div class="bg-light p-5 rounded mt-3">
         <h1>Lista de Vendas</h1>
+
+        <?php if (isset($vendedor)) : ?>
+            <p>Vendas referenta ao vendedor:</p>
+            <p><strong><?= $vendedor['nome']; ?></strong></p>
+        <?php endif; ?>
+
         <table class="table table-striped table-hover table-sm">
             <thead>
                 <tr>
