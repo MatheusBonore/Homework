@@ -1,23 +1,19 @@
 <?php
 
-namespace Homework\Controller;
+namespace Homework\controller;
 
-use Homework\Model as Model;
+use Homework\model as model;
 
-require_once 'inc/BaseController.php';
-require_once 'model/Venda.php';
-require_once 'model/Vendedor.php';
-
-class Venda extends \Homework\Inc\BaseController
+class Venda
 {
     public function listarAction()
     {
-        $vendas = new Model\Venda();
+        $vendas = new model\Venda();
 
         if (isset($_GET['id_vendedor'])) {
             $id_vendedor = $_GET['id_vendedor'];
 
-            $vendedor = new Model\Vendedor();
+            $vendedor = new model\Vendedor();
             $vendedor = $vendedor->selectOne($id_vendedor);
 
             $vendas = $vendas->selectId($id_vendedor);
@@ -30,7 +26,7 @@ class Venda extends \Homework\Inc\BaseController
 
     public function cadastroAction()
     {
-        $vendedores = new Model\Vendedor();
+        $vendedores = new model\Vendedor();
         $vendedores = $vendedores->select();
 
         include 'templates/formulario-venda.phtml';
@@ -42,13 +38,12 @@ class Venda extends \Homework\Inc\BaseController
         $id_vendedor = filter_var($_POST['id_vendedor']);
         $comissao = filter_var($_POST['comissao']);
         
-        $modelVenda = new Model\Venda();
-        $modelVenda->insert($valor, $id_vendedor, $comissao);
+        $modelVenda = new model\Venda();
+        $modelVenda->insert($valor, $id_vendedor, ($comissao / 100) * $valor);
 
         http_response_code(200);
         die(json_encode([
-            'mensagem' => 'Venda Adicionado com Sucesso!!'
+            'mensagem' => 'Venda Adicionada com Sucesso!!'
         ]));
     }
 }
-new Venda();

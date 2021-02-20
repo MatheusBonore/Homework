@@ -13,7 +13,7 @@
                     <span class="btn btn-link btn-sm disabled">Lista de Vendedor</span>
                 </li>
                 <li class="breadcrumb-item active">
-                    <a class="btn btn-link btn-sm" href="../venda/?action=listar" role="button">Lista de Venda</a>
+                    <a class="btn btn-link btn-sm" href="<?=BASE_URL?>/venda/listar" role="button">Lista de Venda</a>
                 </li>
             </ol>
         </nav>
@@ -36,27 +36,27 @@
                     <tr id="tr_<?= $vendedor['id'] ?? '' ?>">
                         <th scope="row"><?= $vendedor['id'] ?? '' ?></th>
                         <td>
-                            <a class="btn btn-link btn-sm" href="../venda/?action=listar&id_vendedor=<?= $vendedor['id'] ?? '' ?>" role="button">
+                            <a class="btn btn-link btn-sm" href="<?=BASE_URL?>/venda/listar?id_vendedor=<?= $vendedor['id'] ?? '' ?>" role="button">
                                 <?= filter_var($vendedor['nome'] ?? '', FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?>
                             </a>
                         </td>
                         <td><?= $vendedor['email'] ?? '' ?></td>
                         <td>
-                            <a class="btn btn-link btn-sm" href="?action=abrirAtualizacao&id=<?= $vendedor['id'] ?? '' ?>" role="button">Editar</a>
+                            <a class="btn btn-link btn-sm" href="<?=BASE_URL?>/vendedor/abrirAtualizacao?id=<?= $vendedor['id'] ?? '' ?>" role="button">Editar</a>
                             <button type="button" class="btn btn-link btn-sm" onclick="excluir(<?= $vendedor['id'] ?? '' ?>);">Excluir</button>
                         </td>
                     </tr>
                 <?php endforeach; ?>
             </tbody>
         </table>
-        <a class="btn btn-success" href="?action=cadastro" role="button">Adicionar</a>
+        <a class="btn btn-success" href="<?=BASE_URL?>/vendedor/cadastro" role="button">Adicionar</a>
     </div>
 </main>
 
 <script>
     function excluir(id) {
         $.ajax({
-            url: '?action=excluir',
+            url: '<?=BASE_URL?>/vendedor/excluir',
             type: 'post',
             data: {
                 id

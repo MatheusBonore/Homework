@@ -10,7 +10,7 @@
 		<nav aria-label="breadcrumb">
 			<ol class="breadcrumb">
 				<li class="breadcrumb-item">
-					<a class="btn btn-link btn-sm" href="?action=listar" role="button">Lista</a>
+					<a class="btn btn-link btn-sm" href="<?=BASE_URL?>/vendedor/listar" role="button">Lista</a>
 				</li>
 				<li class="breadcrumb-item active btn btn-link btn-sm" aria-current="page">
 					<?php if ($cadastro) : ?>
@@ -51,7 +51,7 @@
 				var email = $('#email').val();
 
 				$.ajax({
-					url: '?action=cadastrar',
+					url: '<?=BASE_URL?>/vendedor/cadastrar',
 					type: 'post',
 					data: {
 						nome,
@@ -60,7 +60,7 @@
 				}).done(res => {
 					var json = JSON.parse(res);
 					// alert(json.mensagem);
-					window.location.href = "?action=listar";
+					window.location.href = "<?=BASE_URL?>/vendedor/listar";
 				});
 			});
 		});
@@ -72,7 +72,7 @@
 				var email = $('#email').val();
 
 				$.ajax({
-					url: '?action=atualizar',
+					url: '<?=BASE_URL?>/vendedor/atualizar',
 					type: 'post',
 					data: {
 						id,
@@ -82,7 +82,7 @@
 				}).done(res => {
 					var json = JSON.parse(res);
 					// alert(json.mensagem);
-					window.location.href = "?action=listar";
+					window.location.href = "<?=BASE_URL?>/vendedor/listar";
 				});
 			});
 		});

@@ -1,10 +1,8 @@
 <?php
 
-namespace Homework\Model;
+namespace Homework\model;
 
-require_once 'inc/DB.php';
-
-class Vendedor extends \Homework\Inc\DB
+class Vendedor extends \Homework\inc\DB
 {
     public function select()
     {

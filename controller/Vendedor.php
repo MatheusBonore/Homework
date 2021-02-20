@@ -1,17 +1,14 @@
 <?php
 
-namespace Homework\Controller;
+namespace Homework\controller;
 
-use Homework\Model as Model;
+use Homework\model as model;
 
-require_once 'inc/BaseController.php';
-require_once 'model/Vendedor.php';
-
-class Vendedor extends \Homework\Inc\BaseController
+class Vendedor
 {
     public function listarAction()
     {
-        $vendedores = new Model\Vendedor();
+        $vendedores = new model\Vendedor();
         $vendedores = $vendedores->select();
 
         include 'templates/lista-vendedor.phtml';
@@ -29,7 +26,7 @@ class Vendedor extends \Homework\Inc\BaseController
         $nome = filter_var($_POST['nome']);
         $email = filter_var($_POST['email']);
 
-        $modelVendedor = new Model\Vendedor();
+        $modelVendedor = new model\Vendedor();
         $modelVendedor->insert($nome, $email);
 
         http_response_code(200);
@@ -43,7 +40,7 @@ class Vendedor extends \Homework\Inc\BaseController
         $id = $_GET['id'];
 
         $cadastro = false;
-        $vendedor = new Model\Vendedor();
+        $vendedor = new model\Vendedor();
         $vendedor = $vendedor->selectOne($id);
 
         include 'templates/formulario-vendedor.phtml';
@@ -55,7 +52,7 @@ class Vendedor extends \Homework\Inc\BaseController
         $nome = $_POST['nome'];
         $email = $_POST['email'];
 
-        $modelVendedor = new Model\Vendedor();
+        $modelVendedor = new model\Vendedor();
         $modelVendedor->update($nome, $email, $id);
 
         http_response_code(200);
@@ -68,7 +65,7 @@ class Vendedor extends \Homework\Inc\BaseController
     {
         $id = $_POST['id'];
 
-        $modelVendedor = new Model\Vendedor();
+        $modelVendedor = new model\Vendedor();
         $modelVendedor->delete($id);
 
         http_response_code(200);
@@ -77,4 +74,3 @@ class Vendedor extends \Homework\Inc\BaseController
         ]));
     }
 }
-new Vendedor();

@@ -10,7 +10,7 @@
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb m-0">
                 <li class="breadcrumb-item active">
-                    <a class="btn btn-link btn-sm" href="../vendedor/?action=listar" role="button">Lista de Vendedor</a>
+                    <a class="btn btn-link btn-sm" href="<?=BASE_URL?>/vendedor/listar" role="button">Lista de Vendedor</a>
                 </li>
                 <li class="breadcrumb-item" aria-current="page">
                     <span class="btn btn-link btn-sm disabled">Lista de Venda</span>
@@ -23,7 +23,7 @@
         <h1>Lista de Vendas</h1>
 
         <?php if (isset($vendedor)) : ?>
-            <p>Vendas referenta ao vendedor:</p>
+            <p>Vendas referentes ao vendedor:</p>
             <p><strong><?= $vendedor['nome']; ?></strong></p>
         <?php endif; ?>
 
@@ -51,6 +51,6 @@
                 <?php endforeach; ?>
             </tbody>
         </table>
-        <a class="btn btn-success" href="?action=cadastro" role="button">Adicionar</a>
+        <a class="btn btn-success" href="<?=BASE_URL?>/venda/cadastro" role="button">Adicionar</a>
     </div>
 </main>

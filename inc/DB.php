@@ -1,6 +1,6 @@
 <?php
 
-namespace Homework\Inc;
+namespace Homework\inc;
 
 class DB
 {

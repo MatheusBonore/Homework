@@ -1,0 +1,13 @@
+{
+    "name": "matheus-bonore/homework",
+    "type": "project",
+    "license": "MIT",
+    "require": {
+        "mezzio/mezzio-fastroute": "^3.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Homework\\": "./"
+        }
+    }
+}

@@ -11,7 +11,7 @@
 		<nav aria-label="breadcrumb">
 			<ol class="breadcrumb">
 				<li class="breadcrumb-item">
-					<a class="btn btn-link btn-sm" href="?action=listar" role="button">Lista</a>
+					<a class="btn btn-link btn-sm" href="<?=BASE_URL?>/venda/listar" role="button">Lista</a>
 				</li>
 				<li class="breadcrumb-item active btn btn-link btn-sm" aria-current="page">
 					Cadastrar Venda
@@ -58,7 +58,7 @@
 			var comissao = $('#comissao').val();
 
 			$.ajax({
-				url: '?action=cadastrar',
+				url: '<?=BASE_URL?>/venda/cadastrar',
 				type: 'post',
 				data: {
 					valor,
@@ -68,7 +68,7 @@
 			}).done(res => {
 				var json = JSON.parse(res);
 				// alert(json.mensagem);
-				window.location.href = "?action=listar";
+				window.location.href = "<?=BASE_URL?>/venda/listar";
 			});
 		});
 	});
