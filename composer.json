@@ -3,7 +3,8 @@
     "type": "project",
     "license": "MIT",
     "require": {
-        "mezzio/mezzio-fastroute": "^3.1"
+        "mezzio/mezzio-fastroute": "^3.1",
+        "phpmailer/phpmailer": "^6.3"
     },
     "autoload": {
         "psr-4": {
